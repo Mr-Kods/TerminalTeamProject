@@ -25,7 +25,15 @@ OPENROUTER_API_KEY=your_openrouter_api_key_here
 OPENROUTER_MODEL=google/gemini-2.5-flash
 PORT=5000
 FLASK_DEBUG=False
+
+# (Опционально) Реальная отправка писем восстановления пароля через SMTP:
+# SMTP_SERVER=smtp.yandex.ru
+# SMTP_PORT=465
+# SMTP_USER=your_login@yandex.ru
+# SMTP_PASSWORD=your_yandex_app_password
+# SMTP_USE_SSL=true
 ```
+*(Если параметры SMTP не указаны, сервис автоматически работает в режиме симуляции и выводит одноразовый код в консоль бэкенда).*
 
 ### 3. Запуск сервера
 ```bash

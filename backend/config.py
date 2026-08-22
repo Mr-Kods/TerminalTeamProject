@@ -30,3 +30,12 @@ class Config:
     # Ключи API
     OPENROUTER_API_KEY = os.environ.get('OPENROUTER_API_KEY')
     OPENROUTER_MODEL = os.environ.get('OPENROUTER_MODEL', 'google/gemini-2.5-flash')
+
+    # Настройки почты (SMTP)
+    SMTP_SERVER = os.environ.get('SMTP_SERVER')
+    SMTP_PORT = int(os.environ.get('SMTP_PORT', 465))
+    SMTP_USER = os.environ.get('SMTP_USER')
+    SMTP_PASSWORD = os.environ.get('SMTP_PASSWORD')
+    SMTP_USE_SSL = os.environ.get('SMTP_USE_SSL', 'true').lower() in ('true', '1', 'yes')
+    SMTP_USE_TLS = os.environ.get('SMTP_USE_TLS', 'false').lower() in ('true', '1', 'yes')
+    SMTP_SENDER_NAME = os.environ.get('SMTP_SENDER_NAME', 'Найди профессию (Калининградская область)')

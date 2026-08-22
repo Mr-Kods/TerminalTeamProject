@@ -6,6 +6,7 @@ from flask import Blueprint, request, jsonify
 from flask_login import login_user, logout_user, login_required, current_user
 from app import db
 from app.models import User, PasswordResetCode, utc_now
+from app.email_service import send_password_reset_email
 
 logger = logging.getLogger(__name__)
 auth = Blueprint('auth', __name__)
@@ -180,10 +181,10 @@ def recovery_request():
 
     try:
         db.session.commit()
-        # В реальной почтовой системе код отправляется на email
-        print(f"\n[КОД ВОССТАНОВЛЕНИЯ ДЛЯ {email}]: {raw_code} (действителен 10 минут)\n")
-        logger.info(f"Сгенерирован код восстановления для {email}: {raw_code}")
-        return jsonify({'message': 'Код подтверждения успешно сформирован', 'email': email}), 200
+        # Отправляем реальное письмо на email (или выводим в консоль при отсутствии настроек SMTP)
+        send_password_reset_email(email, raw_code)
+        logger.info(f"Сформирован и отправлен код восстановления для {email}")
+        return jsonify({'message': 'Код подтверждения успешно отправлен на вашу почту', 'email': email}), 200
     except Exception as e:
         db.session.rollback()
         logger.error(f"Ошибка создания кода восстановления: {e}")
