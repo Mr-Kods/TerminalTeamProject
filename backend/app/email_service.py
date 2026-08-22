@@ -55,116 +55,82 @@ def send_password_reset_email(to_email: str, code: str) -> bool:
 Команда Terminal Team
 """
 
+        # Формируем индивидуальные карточки для каждой цифры
+        digits_html = "".join([
+            f'<span style="display: inline-block; width: 44px; height: 54px; line-height: 54px; text-align: center; background-color: #ffffff; border: 1.5px solid #000000; border-radius: 12px; font-size: 28px; font-weight: 800; color: #000000; margin: 0 3px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; box-shadow: 0 2px 6px rgba(0,0,0,0.04); vertical-align: middle;">{d}</span>'
+            for d in code
+        ])
+
         # Брендированная HTML-версия
         html_content = f"""<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <style>
-    body {{
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      background-color: #f7f7f9;
-      color: #1a1a1a;
-      margin: 0;
-      padding: 30px 15px;
-    }}
-    .email-card {{
-      max-width: 520px;
-      margin: 0 auto;
-      background: #ffffff;
-      border-radius: 24px;
-      padding: 40px 32px;
-      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
-      border: 1px solid #ebebf0;
-    }}
-    .email-brand {{
-      font-size: 22px;
-      font-weight: 800;
-      color: #000000;
-      margin-bottom: 6px;
-      letter-spacing: -0.5px;
-    }}
-    .email-brand-sub {{
-      font-size: 13px;
-      color: #666666;
-      margin-bottom: 28px;
-    }}
-    .email-title {{
-      font-size: 18px;
-      font-weight: 600;
-      color: #111111;
-      margin-bottom: 12px;
-    }}
-    .email-text {{
-      font-size: 14.5px;
-      line-height: 1.5;
-      color: #444444;
-      margin-bottom: 24px;
-    }}
-    .code-box {{
-      background: #f1f2f6;
-      border: 1.5px dashed #000000;
-      border-radius: 16px;
-      padding: 18px 24px;
-      text-align: center;
-      margin: 28px 0;
-    }}
-    .code-digits {{
-      font-size: 34px;
-      font-weight: 800;
-      letter-spacing: 9px;
-      color: #000000;
-      font-family: 'SF Mono', Monaco, Consolas, monospace;
-      margin-left: 9px;
-    }}
-    .code-note {{
-      font-size: 12.5px;
-      color: #777777;
-      margin-top: 8px;
-    }}
-    .security-notice {{
-      font-size: 12px;
-      line-height: 1.45;
-      color: #888888;
-      background: #fafafa;
-      border-left: 3px solid #cbff3b;
-      padding: 10px 14px;
-      border-radius: 6px;
-      margin-top: 24px;
-    }}
-    .email-footer {{
-      margin-top: 32px;
-      padding-top: 18px;
-      border-top: 1px solid #eeeeee;
-      font-size: 12px;
-      color: #999999;
-      text-align: center;
-    }}
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Код восстановления пароля</title>
 </head>
-<body>
-  <div class="email-card">
-    <div class="email-brand">Найди профессию</div>
-    <div class="email-brand-sub">по интересам в Калининградской области</div>
+<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f4f4f6; color: #18181b; margin: 0; padding: 36px 16px; -webkit-font-smoothing: antialiased;">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width: 560px; margin: 0 auto; background-color: #ffffff; border-radius: 28px; border: 1px solid #e4e4e7; box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06); overflow: hidden;">
+    <tr>
+      <td style="padding: 40px 36px 36px 36px;">
+        
+        <!-- Шапка сервиса с фирменным стилем -->
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 28px;">
+          <tr>
+            <td>
+              <div style="font-size: 24px; font-weight: 800; color: #000000; letter-spacing: -0.6px; line-height: 1.2;">
+                Найди профессию
+              </div>
+              <div style="font-size: 13.5px; color: #52525b; margin-top: 5px;">
+                по интересам в <span style="background-color: #cbff3b; color: #000000; font-weight: 700; padding: 2px 7px; border-radius: 5px; display: inline-block;">Калининградской области</span>
+              </div>
+            </td>
+          </tr>
+        </table>
 
-    <div class="email-title">Восстановление доступа к аккаунту</div>
-    <div class="email-text">
-      Мы получили запрос на сброс пароля для вашей учётной записи. Введите этот 6-значный код на сайте:
-    </div>
+        <!-- Разделитель -->
+        <div style="height: 1px; background-color: #f4f4f5; margin-bottom: 26px;"></div>
 
-    <div class="code-box">
-      <div class="code-digits">{code}</div>
-      <div class="code-note">Код действителен в течение 10 минут</div>
-    </div>
+        <!-- Заголовок и пояснение -->
+        <div style="font-size: 18px; font-weight: 700; color: #09090b; margin-bottom: 10px;">
+          Восстановление доступа к аккаунту
+        </div>
+        <div style="font-size: 14.5px; line-height: 1.55; color: #3f3f46; margin-bottom: 26px;">
+          Вы запросили сброс пароля. Для подтверждения вашей личности и установки нового пароля введите этот 6-значный код на сайте:
+        </div>
 
-    <div class="security-notice">
-      🔒 <strong>Безопасность:</strong> Если вы не запрашивали восстановление пароля, не беспокойтесь — ваш аккаунт в безопасности. Просто проигнорируйте данное сообщение.
-    </div>
+        <!-- Блок с кодом подтверждения в виде отдельных плашек -->
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin: 0 auto 28px auto; text-align: center;">
+          <tr>
+            <td align="center" style="background-color: #f8f8fa; border-radius: 18px; padding: 24px 16px; border: 1px solid #ededf2;">
+              <div style="white-space: nowrap;">
+                {digits_html}
+              </div>
+              <div style="font-size: 12.5px; color: #71717a; margin-top: 14px; font-weight: 500;">
+                ⏱ Код действителен в течение <strong>10 минут</strong>
+              </div>
+            </td>
+          </tr>
+        </table>
 
-    <div class="email-footer">
-      © 2026 Terminal Team • Калининградская область
-    </div>
-  </div>
+        <!-- Предупреждение о безопасности -->
+        <div style="background-color: #fafafa; border-left: 4px solid #cbff3b; border-radius: 8px; padding: 12px 16px; font-size: 12.5px; line-height: 1.5; color: #52525b; margin-bottom: 28px;">
+          🔒 <strong>Безопасность:</strong> Если вы не запрашивали сброс пароля, просто проигнорируйте это письмо — ваш аккаунт остаётся под надёжной защитой.
+        </div>
+
+        <!-- Подвал карточки -->
+        <div style="border-top: 1px solid #f4f4f5; padding-top: 20px; font-size: 11.5px; line-height: 1.45; color: #a1a1aa; text-align: center;">
+          <div style="font-weight: 600; color: #71717a; margin-bottom: 4px;">
+            Terminal Team • Калининградская область
+          </div>
+          <div>
+            © Министерство молодёжной политики Калининградской области • АНО «Цифровое развитие», 2026
+          </div>
+        </div>
+
+      </td>
+    </tr>
+  </table>
 </body>
 </html>
 """
