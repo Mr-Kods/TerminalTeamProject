@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Найди профессию по интересам в Калининградской области</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="welcome-active">
+
+  <div class="page-wrapper">
+
+    <!-- ================= TOP HEADER ================= -->
+    <header class="top-nav-bar">
+      <div class="header-branding" id="header-brand-click">
+        <h1 class="brand-title">Найди профессию</h1>
+        <div class="brand-subtitle">
+          <span>по интересам в</span>
+          <mark class="brand-highlight">Калининградской области</mark>
+        </div>
+      </div>
+
+      <!-- Кнопка шапки: профиль/войти -->
+      <div class="header-actions-group">
+        <button type="button" id="btn-account-header" class="account-badge-btn" title="Профиль">
+          <svg class="account-user-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+          </svg>
+          <span id="header-account-label" class="account-name-text">войти</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ================= SCREEN 1: LANDING ================= -->
+    <section id="screen-welcome" class="screen-view active">
+      <div class="landing-container">
+        <div class="landing-content">
+          <p class="landing-description">
+            Выбери себе профессию по интересам в Калининградской области с развёрнутым ответом про профессию с предложениями мест обучения с ИИ
+          </p>
+
+          <div class="landing-buttons">
+            <button id="btn-to-register-start" class="img-btn" type="button">
+              <img src="button1_create-profile.png" alt="создать профиль" class="btn-image">
+            </button>
+
+            <button id="btn-to-app" class="img-btn" type="button">
+              <img src="button2_trying.png" alt="попробовать" class="btn-image">
+            </button>
+          </div>
+        </div>
+
+        <div class="landing-castle-wrapper">
+          <img src="castle.png" alt="Кафедральный собор" class="castle-img">
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SCREEN 2: LOGIN ================= -->
+    <section id="screen-login" class="screen-view">
+      <div class="auth-center-wrap">
+        <div class="auth-card-box">
+          <button type="button" class="btn-back-nav btn-goto-welcome" title="Назад">
+            <img src="back.png" alt="Назад" class="back-img" onerror="this.src='data:image/svg+xml;utf8,<svg viewBox=\'0 0 24 24\' width=\'22\' height=\'22\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\'><path d=\'M19 12H5M12 19l-7-7 7-7\'/></svg>'">
+          </button>
+
+          <h2 class="auth-card-title">Вход</h2>
+
+          <form id="login-form" class="auth-box-form">
+            <div class="field-box">
+              <span class="field-label">email</span>
+              <input type="email" id="login-email" class="field-input" required autocomplete="email">
+            </div>
+
+            <div class="field-box">
+              <span class="field-label">пароль</span>
+              <input type="password" id="login-password" class="field-input" required autocomplete="current-password">
+              <button type="button" class="btn-eye-toggle" id="btn-toggle-login-pass" title="Показать пароль">
+                <svg viewBox="0 0 24 24" class="eye-svg"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" fill="none" stroke="#000" stroke-width="1.8"/><circle cx="12" cy="12" r="3" fill="none" stroke="#000" stroke-width="1.8"/></svg>
+              </button>
+            </div>
+
+            <div class="checkbox-line">
+              <label class="custom-check-label">
+                <input type="checkbox" id="login-remember" class="check-real" checked>
+                <span class="check-custom-box">
+                  <svg class="check-icon-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <span class="check-text">запомнить меня</span>
+              </label>
+            </div>
+
+            <div id="login-error-msg" class="form-error-text hidden"></div>
+
+            <button type="submit" id="btn-login-submit" class="auth-pill-btn disabled" disabled>войти</button>
+
+            <div class="auth-sub-links">
+              <div class="sub-link-row">Забыли пароль? <button type="button" class="blue-text-btn btn-goto-recovery">Восстановить</button></div>
+              <div class="sub-link-row">Нет аккаунта? <button type="button" class="blue-text-btn btn-goto-register">Регистрация</button></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SCREEN 2.1: REGISTRATION ================= -->
+    <section id="screen-register" class="screen-view">
+      <div class="auth-center-wrap">
+        <div class="auth-card-box">
+          <button type="button" class="btn-back-nav btn-goto-welcome" title="Назад">
+            <img src="back.png" alt="Назад" class="back-img" onerror="this.src='data:image/svg+xml;utf8,<svg viewBox=\'0 0 24 24\' width=\'22\' height=\'22\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\'><path d=\'M19 12H5M12 19l-7-7 7-7\'/></svg>'">
+          </button>
+
+          <h2 class="auth-card-title">Регистрация</h2>
+
+          <form id="register-form" class="auth-box-form">
+            <div class="field-box">
+              <span class="field-label">email</span>
+              <input type="email" id="reg-email" class="field-input" required autocomplete="email">
+            </div>
+
+            <div class="field-box">
+              <span class="field-label">пароль</span>
+              <input type="password" id="reg-password" class="field-input" required autocomplete="new-password">
+              <button type="button" class="btn-eye-toggle" id="btn-toggle-reg-pass" title="Показать пароль">
+                <svg viewBox="0 0 24 24" class="eye-svg"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" fill="none" stroke="#000" stroke-width="1.8"/><circle cx="12" cy="12" r="3" fill="none" stroke="#000" stroke-width="1.8"/></svg>
+              </button>
+            </div>
+
+            <div id="reg-password-error" class="form-error-text hidden"></div>
+
+            <div class="checkbox-line">
+              <label class="custom-check-label" for="reg-terms-checkbox">
+                <input type="checkbox" id="reg-terms-checkbox" class="check-real">
+                <span class="check-custom-box">
+                  <svg class="check-icon-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <span class="check-text">соглашаюсь с <button type="button" id="btn-open-terms" class="terms-link-btn">условиями</button></span>
+              </label>
+            </div>
+
+            <div class="checkbox-line">
+              <label class="custom-check-label">
+                <input type="checkbox" id="reg-remember" class="check-real" checked>
+                <span class="check-custom-box">
+                  <svg class="check-icon-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <span class="check-text">запомнить меня</span>
+              </label>
+            </div>
+
+            <button type="submit" id="btn-register-submit" class="auth-pill-btn disabled" disabled>зарегистрироваться</button>
+
+            <div class="auth-sub-links">
+              <div class="sub-link-row">Есть аккаунт? <button type="button" class="blue-text-btn btn-goto-login">Войти</button></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SCREEN 2.2: RECOVERY STEP 1 ================= -->
+    <section id="screen-recovery-step1" class="screen-view">
+      <div class="auth-center-wrap">
+        <div class="auth-card-box">
+          <button type="button" class="btn-back-nav btn-goto-login" title="Назад">
+            <img src="back.png" alt="Назад" class="back-img">
+          </button>
+
+          <h2 class="auth-card-title multiline">Восстановление<br>пароля</h2>
+
+          <form id="recovery-step1-form" class="auth-box-form">
+            <div class="field-box">
+              <span class="field-label">email</span>
+              <input type="email" id="recovery-email-input" class="field-input" required autocomplete="email">
+            </div>
+
+            <div id="recovery-step1-error" class="form-error-text hidden"></div>
+
+            <button type="submit" id="btn-send-recovery-code" class="auth-pill-btn disabled" disabled>отправить код</button>
+
+            <div class="auth-sub-links">
+              <div class="sub-link-row">Вспомнили пароль? <button type="button" class="blue-text-btn btn-goto-login">Вход</button></div>
+              <div class="sub-link-row">Нет аккаунта? <button type="button" class="blue-text-btn btn-goto-register">Регистрация</button></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SCREEN 2.3: RECOVERY STEP 2 ================= -->
+    <section id="screen-recovery-step2" class="screen-view">
+      <div class="auth-center-wrap">
+        <div class="auth-card-box">
+          <button type="button" class="btn-back-nav btn-goto-recovery1" title="Назад">
+            <img src="back.png" alt="Назад" class="back-img">
+          </button>
+
+          <h2 class="auth-card-title multiline">Введите код<br>из письма на</h2>
+          <div id="recovery-display-email" class="recovery-email-sub">user@mail.ru</div>
+
+          <form id="recovery-step2-form" class="auth-box-form">
+            <div class="otp-boxes-grid" id="otp-container">
+              <input type="text" maxlength="1" class="otp-cell" inputmode="numeric" autocomplete="one-time-code" required>
+              <input type="text" maxlength="1" class="otp-cell" inputmode="numeric" required>
+              <input type="text" maxlength="1" class="otp-cell" inputmode="numeric" required>
+              <input type="text" maxlength="1" class="otp-cell" inputmode="numeric" required>
+              <input type="text" maxlength="1" class="otp-cell" inputmode="numeric" required>
+              <input type="text" maxlength="1" class="otp-cell" inputmode="numeric" required>
+            </div>
+
+            <div id="otp-error-message" class="otp-status-text error-red hidden">
+              <span>Неверный код. </span>
+              <button type="button" id="btn-resend-code-error" class="underline-action-red">Отправить повторно</button>
+            </div>
+
+            <div id="otp-timer-message" class="otp-status-text dark-text">
+              <span>Отправить код повторно через <span id="resend-timer-count">00:58</span></span>
+            </div>
+
+            <div id="otp-resend-ready" class="otp-status-text dark-text hidden">
+              <button type="button" id="btn-resend-code-ready" class="underline-action-dark">Отправить код повторно</button>
+            </div>
+
+            <div class="auth-sub-links" style="margin-top: 18px;">
+              <div class="sub-link-row">Вспомнили пароль? <button type="button" class="blue-text-btn btn-goto-login">Вход</button></div>
+              <div class="sub-link-row">Нет аккаунта? <button type="button" class="blue-text-btn btn-goto-register">Регистрация</button></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SCREEN 2.4: RECOVERY STEP 3 ================= -->
+    <section id="screen-recovery-step3" class="screen-view">
+      <div class="auth-center-wrap">
+        <div class="auth-card-box">
+          <h2 class="auth-card-title multiline">Введите<br>новый пароль</h2>
+
+          <form id="recovery-step3-form" class="auth-box-form">
+            <div class="field-box">
+              <span class="field-label">пароль</span>
+              <input type="password" id="new-password-input" class="field-input" required autocomplete="new-password">
+              <button type="button" class="btn-eye-toggle" id="btn-toggle-new-pass" title="Показать пароль">
+                <svg viewBox="0 0 24 24" class="eye-svg"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" fill="none" stroke="#000" stroke-width="1.8"/><circle cx="12" cy="12" r="3" fill="none" stroke="#000" stroke-width="1.8"/></svg>
+              </button>
+            </div>
+
+            <div id="new-password-error" class="form-error-text hidden"></div>
+
+            <button type="submit" id="btn-save-new-password" class="auth-pill-btn disabled" disabled>сохранить и войти</button>
+
+            <div class="auth-sub-links">
+              <div class="sub-link-row">Нет аккаунта? <button type="button" class="blue-text-btn btn-goto-register">Регистрация</button></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SCREEN 3: APP WORKSPACE ================= -->
+    <section id="screen-app" class="screen-view">
+      <div class="app-workspace-layout">
+        
+        <!-- Поля ввода слева -->
+        <div class="inputs-column">
+          <div class="workspace-card" id="card-interests">
+            <label class="workspace-card-label" for="input-interests">введи свои интересы</label>
+            <textarea 
+              id="input-interests" 
+              class="workspace-textarea" 
+              placeholder="Люблю рисовать, делаю скетчи к фанфикам..."
+              rows="6"
+            ></textarea>
+            
+            <div id="reset-alert" class="reset-alert-row hidden">
+              <span>Данные изменены, <button type="button" id="btn-reset-chat" class="reset-link">сбросить диалог?</button></span>
+            </div>
+          </div>
+
+          <div class="workspace-card" id="card-conditions">
+            <label class="workspace-card-label" for="input-conditions">твои условия обучения</label>
+            <textarea 
+              id="input-conditions" 
+              class="workspace-textarea" 
+              placeholder="Гусев, либо Калининград, после 9 класса..."
+              rows="4"
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- Окно чата справа -->
+        <div class="chat-column">
+          <div class="workspace-card chat-card-container">
+            
+            <div class="chat-header">
+              <img src="AIStar.png" alt="✦" class="sparkle-star-icon" onerror="this.style.display='none'">
+              <span class="chat-header-title">предложения ии</span>
+            </div>
+
+            <div class="chat-messages-container" id="chat-messages"></div>
+
+            <div class="chat-bottom-bar">
+              <div id="start-chat-bar" class="start-action-bar">
+                <button type="button" id="btn-start-chat" class="btn-start-bar disabled" disabled>
+                  <span>начать общение</span>
+                  <svg class="send-arrow-svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                  </svg>
+                </button>
+              </div>
+
+              <div id="active-chat-bar" class="active-input-bar hidden">
+                <input 
+                  type="text" 
+                  id="chat-user-input" 
+                  class="chat-text-field" 
+                  placeholder="продолжить общение с чат-ботом"
+                >
+                <button type="button" id="btn-send-message" class="btn-send-round-red" title="Отправить">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= COMBINED PROFILE & SAVED CHATS MODAL ================= -->
+    <div id="profile-drawer-overlay" class="modal-backdrop-wrap hidden">
+      <div class="profile-combined-modal-card">
+        
+        <!-- Левая колонка: Профиль -->
+        <div class="profile-col-left">
+          <div class="profile-col-header">
+            <button type="button" id="btn-close-profile" class="btn-profile-arrow-back" title="Назад">
+              <img src="back.png" alt="Назад" class="back-img">
+            </button>
+            <div class="profile-title-inline">
+              <svg class="profile-user-svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+              </svg>
+              <h3 class="profile-modal-heading" id="profile-title-text">Профиль</h3>
+            </div>
+          </div>
+
+          <form id="profile-form" class="profile-fields-list">
+            <div class="profile-field-box">
+              <span class="field-label">имя</span>
+              <input type="text" id="prof-firstname" class="field-input" placeholder="">
+              <span class="pencil-icon">✎</span>
+            </div>
+
+            <div class="profile-field-box">
+              <span class="field-label">фамилия</span>
+              <input type="text" id="prof-lastname" class="field-input" placeholder="">
+              <span class="pencil-icon">✎</span>
+            </div>
+
+            <div class="profile-field-box">
+              <span class="field-label">email*</span>
+              <input type="email" id="prof-email" class="field-input" required>
+              <span class="pencil-icon">✎</span>
+            </div>
+
+            <div class="field-req-note">*обязательно для заполнения</div>
+
+            <div id="profile-form-error" class="form-error-text hidden" style="margin-bottom: 8px;"></div>
+
+            <button type="submit" id="btn-save-profile" class="auth-pill-btn active-black" style="display:none; margin-top:0;">сохранить изменения</button>
+          </form>
+
+          <div class="profile-actions-stack">
+            <button type="button" id="btn-profile-logout" class="profile-pill-action-btn">
+              <svg class="action-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/>
+              </svg>
+              <span id="logout-btn-text">выйти из аккаунта</span>
+            </button>
+
+            <button type="button" id="btn-profile-delete-open" class="profile-pill-action-btn delete-btn">
+              <svg class="action-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+              </svg>
+              <span id="delete-btn-text">удалить аккаунт</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Правая колонка: Сохранённые чаты -->
+        <div class="profile-col-right">
+          <div class="saved-chats-col-header">
+            <svg class="saved-chats-bookmark-svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <h3 class="saved-chats-modal-heading" id="saved-chats-title-text">Сохранённые чаты</h3>
+          </div>
+
+          <div id="history-chats-list" class="saved-chats-scroll-list">
+            <!-- Динамический список чатов или empty state -->
+          </div>
+
+          <div class="saved-chats-footer-actions">
+            <button type="button" id="btn-clear-all-chats" class="btn-clear-all-chats-link hidden">удалить все чаты</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ================= DELETE CONFIRMATION MODAL ================= -->
+    <div id="modal-delete-confirm" class="modal-backdrop-center hidden">
+      <div class="confirm-card-box">
+        <h3 class="confirm-modal-title" id="confirm-modal-title-text">Вы уверены, что<br>хотите удалить<br>аккаунт?</h3>
+        <div class="confirm-modal-buttons">
+          <button type="button" id="btn-confirm-delete-yes" class="btn-confirm-yes">да</button>
+          <button type="button" id="btn-confirm-delete-cancel" class="btn-confirm-cancel">отмена</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= TERMS & CONDITIONS MODAL ================= -->
+    <div id="modal-terms" class="modal-backdrop-center hidden">
+      <div class="terms-card-box">
+        <div class="terms-modal-header">
+          <h3 class="terms-modal-title">Пользовательское соглашение и условия</h3>
+          <button type="button" id="btn-close-terms" class="btn-terms-close" title="Закрыть">✕</button>
+        </div>
+
+        <div class="terms-modal-content">
+          <div class="terms-section">
+            <h4>1. Общие положения</h4>
+            <p>Сервис «Найди профессию по интересам в Калининградской области» предоставляет интеллектуальный подбор направлений обучения, учебных заведений региона и консультационную поддержку с использованием искусственного интеллекта.</p>
+          </div>
+
+          <div class="terms-section">
+            <h4>2. Обработка персональных данных</h4>
+            <p>Регистрируясь в сервисе, вы даете согласие на обработку адреса электронной почты и введенных данных профиля. Данные используются исключительно для авторизации, сохранения истории подбора и персонализации ответов. Пароли хранятся в зашифрованном виде (криптографический хэш), а данные не передаются третьим лицам.</p>
+          </div>
+
+          <div class="terms-section">
+            <h4>3. Информационный характер</h4>
+            <p>Все рекомендации, прогнозы зарплат и сведения о бюджетных местах носят информационно-аналитический характер. Актуальные условия приема, количество мест и стоимость обучения рекомендуется уточнять в официальных приемных комиссиях учебных заведений.</p>
+          </div>
+
+          <div class="terms-section">
+            <h4>4. Права пользователя</h4>
+            <p>Вы можете в любой момент изменить данные своего профиля или полностью удалить свой аккаунт вместе со всей историей рекомендаций через личный кабинет.</p>
+          </div>
+        </div>
+
+        <div class="terms-modal-footer">
+          <button type="button" id="btn-accept-terms" class="auth-pill-btn active-black" style="margin-top: 0;">Принять и закрыть</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= INFO / TERMINAL TEAM MODAL ================= -->
+    <div id="modal-team-overlay" class="modal-backdrop-wrap modal-backdrop-bottom-left hidden">
+      <div class="team-info-card-box">
+        <h3 class="info-modal-title">Информация</h3>
+
+        <div class="info-section-group">
+          <h4 class="info-subheading">Terminal Team</h4>
+          <div class="team-members-grid">
+            <div class="team-member-row">
+              <span class="team-role">менеджмент</span>
+              <span class="team-name">Манахов Матвей</span>
+            </div>
+            <div class="team-member-row">
+              <span class="team-role">дизайн</span>
+              <span class="team-name">Доржиев Ким</span>
+            </div>
+            <div class="team-member-row">
+              <span class="team-role">фронтенд</span>
+              <span class="team-name">Ибрагим Юнис</span>
+            </div>
+            <div class="team-member-row">
+              <span class="team-role">бэкенд</span>
+              <span class="team-name">Акопян Норик</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section-group" style="margin-top: 24px;">
+          <h4 class="info-subheading">
+            ИИ на базе <span class="info-circle-badge">ⓘ</span>
+          </h4>
+          <div class="ai-provider-name">Google Gemini API</div>
+        </div>
+
+        <div class="info-footer-grid">
+          <div class="info-footer-col">
+            <p>ⓘ Веб-сервис профориентации школьников с применением технологий генеративного искусственного интеллекта</p>
+          </div>
+          <div class="info-footer-col">
+            <p>© Министерство молодёжной политики Калининградской области; АНО “Цифровое развитие”, 2026<br>Все права защищены</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= GLOBAL FOOTER ================= -->
+    <footer class="app-global-footer" id="app-footer">
+      <div class="footer-left-group" id="footer-team-btn" title="О команде Terminal Team">
+        <img src="mylogo.png" alt="Logo" class="footer-icon-img footer-mylogo" onerror="this.style.display='none'">
+        <img src="myteem.png" alt="Terminal Team" class="footer-icon-img footer-teamlogo" onerror="this.style.display='none'">
+        <img src="molod39.png" alt="Молодёжь 39" class="footer-icon-img footer-molodlogo" onerror="this.style.display='none'">
+      </div>
+
+      <div class="footer-right-group">
+        <div class="footer-dropdown" id="btn-lang-toggle" style="cursor: pointer;">
+          <span id="footer-lang-label">русский</span>
+          <svg viewBox="0 0 24 24" class="dropdown-chevron"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+        </div>
+
+        <div class="footer-dropdown" id="btn-theme-toggle">
+          <span id="theme-label">светлая тема</span>
+          <svg viewBox="0 0 24 24" class="dropdown-chevron"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

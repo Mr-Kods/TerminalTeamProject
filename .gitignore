@@ -1,0 +1,33 @@
+# Переменные окружения и секреты
+**/.env*
+.env
+.env.*
+
+# Исключения для шаблонов
+!.env.example
+!.env.template
+
+# Базы данных SQLite
+*.db
+*.sqlite
+*.sqlite3
+instance/
+**/instance/
+
+# Python кэш и байткод
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# Виртуальные окружения
+venv/
+.venv/
+env/
+
+# Логи и мусорные файлы
+*.log
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
