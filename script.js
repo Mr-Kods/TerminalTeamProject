@@ -1509,7 +1509,8 @@ document.addEventListener('DOMContentLoaded', () => {
       field_email: "email*",
       field_password: "пароль*",
       remember_me: "запомнить меня",
-      forgot_password: "забыли пароль?",
+      forgot_password: "Забыли пароль?",
+      action_recovery: "Восстановить",
       btn_login: "войти",
       no_account_text: "Нет аккаунта?",
       action_register: "Регистрация",
@@ -1568,7 +1569,8 @@ document.addEventListener('DOMContentLoaded', () => {
       field_email: "email*",
       field_password: "password*",
       remember_me: "remember me",
-      forgot_password: "forgot password?",
+      forgot_password: "Forgot password?",
+      action_recovery: "Restore",
       btn_login: "sign in",
       no_account_text: "No account?",
       action_register: "Register",
@@ -1649,11 +1651,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (loginPassLabel) loginPassLabel.textContent = t.field_password;
     const loginRememberLabel = document.querySelector('#screen-login .check-text');
     if (loginRememberLabel) loginRememberLabel.textContent = t.remember_me;
-    const forgotPassBtn = document.querySelector('#screen-login .underline-action-dark');
-    if (forgotPassBtn) forgotPassBtn.textContent = t.forgot_password;
     if (btnLoginSubmit) btnLoginSubmit.textContent = t.btn_login;
-    const loginNoAccText = document.querySelector('#screen-login .sub-link-row');
-    if (loginNoAccText && loginNoAccText.childNodes.length > 0) loginNoAccText.childNodes[0].textContent = t.no_account_text + ' ';
+
+    const loginForgotRow = document.getElementById('login-forgot-row');
+    if (loginForgotRow && loginForgotRow.childNodes.length > 0) loginForgotRow.childNodes[0].textContent = t.forgot_password + ' ';
+    const btnForgot = document.querySelector('#login-forgot-row .btn-goto-recovery');
+    if (btnForgot) btnForgot.textContent = t.action_recovery;
+
+    const loginRegisterRow = document.getElementById('login-register-row');
+    if (loginRegisterRow && loginRegisterRow.childNodes.length > 0) loginRegisterRow.childNodes[0].textContent = t.no_account_text + ' ';
+    const btnReg = document.querySelector('#login-register-row .btn-goto-register');
+    if (btnReg) btnReg.textContent = t.action_register;
 
     // Register screen
     const regTitle = document.querySelector('#screen-register .auth-card-title');
